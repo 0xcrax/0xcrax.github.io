@@ -1021,8 +1021,6 @@ python3 Exploit-pin-Werkzeug-Console.py
 
 Now we have everything we need: the SECRET from the HTML, the PIN from our cracker, and the `/console` endpoint.
 
-![](/images/TryHackMe/Plant-Photographer/img_werkzeug_console.png)
-
 Enter the PIN `110-688-511` into the console's PIN prompt. The console unlocks and we get an interactive Python REPL running in the Flask application context.
 
 ### Initial Command Execution
