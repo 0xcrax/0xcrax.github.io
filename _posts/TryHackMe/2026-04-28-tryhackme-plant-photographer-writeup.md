@@ -11,7 +11,7 @@ image:
 
 *🧰 Writeup Overview*
 
-> **Attack Chain:** Recon ▶ SSRF → LFI ▶ Source Code Leak ▶ Werkzeug PIN Crack ▶ RCE> **Attack Chain:** Recon ▶ SSRF → LFI ▶ Source Code Leak ▶ Werkzeug PIN Crack ▶ RCE
+> **Attack Chain:** Recon ▶ SSRF → LFI ▶ Source Code Leak ▶ Werkzeug PIN Crack ▶ RCE
 
 `SSRF, LFI via file://`, `Werkzeug Debugger PIN Crack`, and Full `RCE`
 
