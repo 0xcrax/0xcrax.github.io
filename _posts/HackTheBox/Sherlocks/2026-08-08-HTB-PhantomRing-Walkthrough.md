@@ -1,7 +1,7 @@
 ---
 title: 'HackTheBox: PhantomRing Sherlock Walkthrough'
 author: 0xcrax
-categories: [HackTheBox]
+categories: [HackTheBox, Sherlocks]
 
 tags: [radare2, r2, Reverse-Engineering, Malware, C2, io_uring, EDR-evasion, eBPF, forensics, ELF, Static-Analysis, Dynamic-Analysis, ltrace, strace, ftrace, suid, procfs, Kernel-Interface]
 render_with_liquid: true
