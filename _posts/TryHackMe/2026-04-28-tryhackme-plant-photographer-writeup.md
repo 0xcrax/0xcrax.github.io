@@ -18,7 +18,7 @@ image:
 
 <a href="https://tryhackme.com/r/room/plantphotographer" target="_blank" class="box-button" data-mobile-text="Planet Photographer CTF Challenge | TryHackMe" style="display: flex; width: 100%; max-width: 1000px; align-items: center; justify-content: center; background: linear-gradient(135deg, #2a0e0e 0%, #1a0505 100%); padding: 15px 20px; border-radius: 8px; box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3); color: #ff4444; text-decoration: none; font-family: Arial, sans-serif; font-weight: bold; border: 1px solid #ff5555; margin: 10px auto; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 0 25px rgba(255, 0, 0, 0.7)'; this.style.color='#ffffff';" onmouseout="this.style.transform='translateY(0px)'; this.style.boxShadow='0 4px 15px rgba(255, 0, 0, 0.3)'; this.style.color='#ff4444';">
 <span>Planet Photographer CTF Challenge | TryHackMe</span>  
-<img src="https://tryhackme.com/r/favicon.png" alt="Icon" style="width: 48px; height: 48px; margin-right: 10px; filter: hue-rotate(300deg) brightness(0.9); transition: all 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'; this.style.filter='hue-rotate(320deg) brightness(1.3)';" onmouseout="this.style.transform='scale(1)'; this.style.filter='hue-rotate(300deg) brightness(0.9)';">
+<img src="/images/TryHackMe/THM.webp" alt="Icon" style="width: 48px; height: 48px; margin-right: 10px; filter: hue-rotate(300deg) brightness(0.9); transition: all 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'; this.style.filter='hue-rotate(320deg) brightness(1.3)';" onmouseout="this.style.transform='scale(1)'; this.style.filter='hue-rotate(300deg) brightness(0.9)';">
 </a>
 
 ![](/images/TryHackMe/Plant-Photographer/img_main_page.png)
@@ -26,13 +26,29 @@ image:
 
 ## Table of Contents
 
+- [Table of Contents](#table-of-contents)
 - [Target Recon](#target-recon)
+  - [Port Scan — RustScan](#port-scan--rustscan)
+  - [Service Detection — Nmap](#service-detection--nmap)
+  - [Directory Enumeration — Feroxbuster](#directory-enumeration--feroxbuster)
 - [Web Enumeration](#web-enumeration)
+  - [Main Page — The Portfolio of "Jay Green"](#main-page--the-portfolio-of-jay-green)
+  - [Werkzeug Debugger — /console](#werkzeug-debugger--console)
+  - [/admin Endpoint](#admin-endpoint)
 - [Digging into the /download Endpoint](#digging-into-the-download-endpoint)
 - [SSRF Confirmed — Flag #1 (API Key)](#ssrf-confirmed--flag-1-api-key)
 - [Pivoting to LFI — The file:// Trick](#pivoting-to-lfi--the-file-trick)
 - [System Recon via LFI](#system-recon-via-lfi)
+  - [Network Information](#network-information)
+  - [Process Information](#process-information)
+  - [Environment Variables](#environment-variables)
+  - [Boot ID](#boot-id)
+  - [Docker Container ID](#docker-container-id)
+  - [/etc/shadow](#etcshadow)
+  - [Mount Information (Confirms Docker)](#mount-information-confirms-docker)
+  - [Memory Maps (Library Paths)](#memory-maps-library-paths)
 - [Source Code Leak — app.py](#source-code-leak--apppy)
+  - [Source Code Analysis](#source-code-analysis)
 - [Source Code Leak — Flask app.py](#source-code-leak--flask-apppy)
 - [LFI Enumerator Script](#lfi-enumerator-script)
 - [Flag #2 — Admin Flag via SSRF](#flag-2--admin-flag-via-ssrf)
@@ -42,9 +58,11 @@ image:
   - [The PIN Cracker Script](#the-pin-cracker-script)
   - [Running the Exploit](#running-the-exploit)
 - [RCE via Werkzeug Interactive Console](#rce-via-werkzeug-interactive-console)
+  - [Initial Command Execution](#initial-command-execution)
 - [Flag #3 — Root Flag](#flag-3--root-flag)
 - [Reverse Shell](#reverse-shell)
 - [Full Attack Chain](#full-attack-chain)
+- [Key Techniques \& Takeaways](#key-techniques--takeaways)
 
 ---
 
